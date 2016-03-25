@@ -1,0 +1,14 @@
+*.ncrunchproject
+
+*.ncrunchsolution
+*.suo
+*.cache
+
+packages
+_ReSharper.Caches
+
+MathHelperRedux/bin
+MathHelperRedux/obj
+
+MathHelperReduxTest/bin
+MathHelperReduxTest/obj
