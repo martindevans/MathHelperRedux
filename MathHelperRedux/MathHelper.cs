@@ -5,6 +5,10 @@ namespace MathHelperRedux
 {
     public static class MathHelper
     {
+        //MIT licensed implementation of the same thing:
+        //  https://github.com/mono/MonoGame/blob/6619f1ab42c427dd43a9ecb74cea01f8c83ecfbe/MonoGame.Framework/MathHelper.cs
+        //This can be a handy reference
+
         /// <summary>
         /// Represents the mathematical constant e(2.71828175).
         /// </summary>
