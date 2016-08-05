@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
+using System.Net;
 
 namespace MathHelperRedux
 {
@@ -17,37 +18,31 @@ namespace MathHelperRedux
         /// <summary>
         /// Represents the log base ten of e(0.4342945).
         /// </summary>
-        // ReSharper disable once InconsistentNaming (justification: stay consistent with XNA)
         public const float Log10E = 0.4342945f;
 
         /// <summary>
         /// Represents the log base two of e(1.442695).
         /// </summary>
-        // ReSharper disable once InconsistentNaming (justification: stay consistent with XNA)
         public const float Log2E = 1.442695f;
 
         /// <summary>
         /// Represents the value of pi(3.14159274).
         /// </summary>
-        // ReSharper disable once InconsistentNaming (justification: stay consistent with XNA)
         public const float Pi = (float)Math.PI;
 
         /// <summary>
         /// Represents the value of pi divided by two(1.57079637).
         /// </summary>
-        // ReSharper disable once InconsistentNaming (justification: stay consistent with XNA)
         public const float PiOver2 = (float)(Math.PI / 2.0);
 
         /// <summary>
         /// Represents the value of pi divided by four(0.7853982).
         /// </summary>
-        // ReSharper disable once InconsistentNaming (justification: stay consistent with XNA)
         public const float PiOver4 = (float)(Math.PI / 4.0);
 
         /// <summary>
         /// Represents the value of pi times two(6.28318548).
         /// </summary>
-        // ReSharper disable once InconsistentNaming (justification: stay consistent with XNA)
         public const float TwoPi = (float)(Math.PI * 2.0);
 
         public static float ToRadians(this float degrees)
@@ -74,7 +69,7 @@ namespace MathHelperRedux
             //
             //    -(5f.Clamp(0, 10))
             //
-            //Yeah... Not clever extensions on floats!
+            //Yeah... No clever extensions on floats!
             //Now this is *not* a problem for the ToRadians and ToDegrees methods above, because it turns out that they work exactly the same no matter
 
             return value < min
@@ -99,6 +94,18 @@ namespace MathHelperRedux
         public static float Lerp(float min, float max, float t)
         {
             return (max - min) * t + min;
+        }
+
+        /// <summary>
+        /// Calculates the 't' value which produces the target value = lerp(a, b, t)
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static float InverseLerp(float a, float b, float value)
+        {
+            return (value - a) / (b - a);
         }
     }
 }

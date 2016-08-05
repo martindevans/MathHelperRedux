@@ -96,5 +96,41 @@ namespace MathHelperReduxTest
         {
             Assert.AreEqual(-15, MathHelper.Lerp(0, 10, -1.5f));
         }
+
+        [TestMethod]
+        public void AssertThat_InverseLerp_CalculatesValueInRange()
+        {
+            Assert.AreEqual(0.5f, MathHelper.InverseLerp(0, 1, 0.5f));
+        }
+
+        [TestMethod]
+        public void AssertThat_InverseLerp_CalculatesValueUnderRange()
+        {
+            Assert.AreEqual(-0.5f, MathHelper.InverseLerp(0, 10, -5f));
+        }
+
+        [TestMethod]
+        public void AssertThat_InverseLerp_CalculatesValueOverRange()
+        {
+            Assert.AreEqual(2f, MathHelper.InverseLerp(0, 7, 14));
+        }
+
+        [TestMethod]
+        public void AssertThat_InverseLerp_CalculatesValueInRange_WithReverseRange()
+        {
+            Assert.AreEqual(0.25f, MathHelper.InverseLerp(1, 0, 0.75f));
+        }
+
+        [TestMethod]
+        public void AssertThat_InverseLerp_CalculatesValueUnderRange_WithReverseRange()
+        {
+            Assert.AreEqual(1.5f, MathHelper.InverseLerp(10, 0, -5f));
+        }
+
+        [TestMethod]
+        public void AssertThat_InverseLerp_CalculatesValueOverRange_WithReverseRange()
+        {
+            Assert.AreEqual(-1f, MathHelper.InverseLerp(7, 0, 14));
+        }
     }
 }
