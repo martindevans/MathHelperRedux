@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
-using System.Net;
 
 namespace MathHelperRedux
 {
@@ -106,6 +105,30 @@ namespace MathHelperRedux
         public static float InverseLerp(float a, float b, float value)
         {
             return (value - a) / (b - a);
+        }
+
+        /// <summary>
+        /// Given an interpolation factor, bilinearly interpolate 4 values
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="lerp">A lerp function</param>
+        /// <param name="yt">interpolation along y axis</param>
+        /// <param name="tl">value at top left</param>
+        /// <param name="tr">value at top right</param>
+        /// <param name="br">value at bot right</param>
+        /// <param name="bl">value at bot left</param>
+        /// <param name="xt">Interpolation along x axis</param>
+        /// <returns></returns>
+        public static T BilinearLerp<T>(Func<T, T, float, T> lerp, float xt, float yt, T tl, T tr, T br, T bl)
+        {
+            Contract.Requires(lerp != null);
+
+            //lerp horizontal
+            var top = lerp(tl, tr, xt);
+            var bot = lerp(bl, br, xt);
+
+            //lerp vertical
+            return lerp(bot, top, yt);
         }
     }
 }

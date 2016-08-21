@@ -132,5 +132,29 @@ namespace MathHelperReduxTest
         {
             Assert.AreEqual(-1f, MathHelper.InverseLerp(7, 0, 14));
         }
+
+        [TestMethod]
+        public void AssertThat_BilinearLerp_LerpsInRange()
+        {
+            var v = MathHelper.BilinearLerp(MathHelper.Lerp, 0.5f, 0.5f, 1f, 2, 3, 4);
+
+            Assert.AreEqual(2.5f, v);
+        }
+
+        [TestMethod]
+        public void AssertThat_BilinearLerp_LerpsOverXRange()
+        {
+            var v = MathHelper.BilinearLerp(MathHelper.Lerp, 1.5f, 0.5f, 1f, 2, 3, 4);
+
+            Assert.AreEqual(2.5f, v);
+        }
+
+        [TestMethod]
+        public void AssertThat_BilinearLerp_LerpsOverYRange()
+        {
+            var v = MathHelper.BilinearLerp(MathHelper.Lerp, 0.5f, 1.5f, 1f, 2, 3, 4);
+
+            Assert.AreEqual(0.5f, v);
+        }
     }
 }
