@@ -130,5 +130,34 @@ namespace MathHelperRedux
             //lerp vertical
             return lerp(bot, top, yt);
         }
+
+        /// <summary>
+        /// Given an interpolation factor, bilinearly interpolate 4 values
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="lerp">A lerp function</param>
+        /// <param name="yt">interpolation along y axis</param>
+        /// <param name="xt">Interpolation along x axis</param>
+        /// <param name="zt">Interpolation along Z axis</param>
+        /// <param name="brb">Value at bot right back</param>
+        /// <param name="brf">Value at bot right front</param>
+        /// <param name="blb">Value at bot left back</param>
+        /// <param name="blf">Value at bot left front</param>
+        /// <param name="trb">Value at top right back</param>
+        /// <param name="trf">Value at top right front</param>
+        /// <param name="tlb">Value top left back</param>
+        /// <param name="tlf">Value at top left front</param>
+        /// <returns></returns>
+        public static T TrilinearLerp<T>(Func<T, T, float, T> lerp, float xt, float yt, float zt, T brb, T brf, T blb, T blf, T trb, T trf, T tlb, T tlf)
+        {
+            Contract.Requires(lerp != null);
+
+            //bilerp top
+            var top = BilinearLerp(lerp, xt, zt, tlb, trb, trf, tlf);
+            var bot = BilinearLerp(lerp, xt, zt, blb, brb, brf, blf);
+
+            //lerp vertical
+            return lerp(bot, top, yt);
+        }
     }
 }

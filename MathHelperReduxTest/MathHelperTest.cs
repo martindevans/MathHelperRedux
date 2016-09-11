@@ -156,5 +156,21 @@ namespace MathHelperReduxTest
 
             Assert.AreEqual(0.5f, v);
         }
+
+        [TestMethod]
+        public void AssertThat_TrilinearLerp_LerpsInRange()
+        {
+            var v = MathHelper.TrilinearLerp<float>(MathHelper.Lerp, 0.5f, 0.5f, 0.5f, 1, 2, 3, 4, 1, 2, 3, 4);
+
+            Assert.AreEqual(2.5f, v);
+        }
+
+        [TestMethod]
+        public void AssertThat_TrilinearLerp_LerpsOverXRange()
+        {
+            var v = MathHelper.TrilinearLerp<float>(MathHelper.Lerp, 1.5f, 0, 0.5f, 1, 1, 1, 1, 5, 6, 7, 8);
+
+            Assert.AreEqual(1, v);
+        }
     }
 }
