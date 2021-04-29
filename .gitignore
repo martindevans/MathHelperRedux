@@ -3,6 +3,7 @@
 *.ncrunchsolution
 *.suo
 *.cache
+.vs
 
 packages
 _ReSharper.Caches
@@ -13,3 +14,4 @@ MathHelperRedux/obj
 MathHelperReduxTest/bin
 MathHelperReduxTest/obj
 /*.user
+/MathHelperRedux/push-all.ps1
